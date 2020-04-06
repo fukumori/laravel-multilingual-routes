@@ -13,7 +13,7 @@ if (! function_exists('current_route')) {
     function current_route(string $locale = null): string
     {
         $route = Route::getCurrentRoute();
-        $parameters = request()->route()->parameters;
+        $parameters = $route->parameters;
         $query = request()->getQueryString() ?: [];
 
         if (! $route->getName() || ! in_array($locale, locales())) {
