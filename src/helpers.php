@@ -14,7 +14,7 @@ if (! function_exists('current_route')) {
     {
         $route = Route::getCurrentRoute();
         $parameters = $route->parameters;
-        $query = request()->getQueryString() ?: [];
+        $query = (array) request()->getQueryString();
 
         if (! $route->getName() || ! in_array($locale, locales())) {
             return url($route->uri.($query ? "?{$query}" : null));
